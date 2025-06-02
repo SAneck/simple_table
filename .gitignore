@@ -1,0 +1,14 @@
+# Исключить папку node_modules
+node_modules/
+
+# Дополнительные полезные исключения для Node.js проектов:
+.DS_Store       # (Mac) служебный файл
+.env            # файлы с переменными окружения
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/dist           # (если используете сборку)
+.idea/          # (если используете JetBrains IDE)
+.vscode/        # (если используете VS Code)
+*.tmp
+*.bak
