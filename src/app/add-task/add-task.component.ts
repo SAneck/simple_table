@@ -15,7 +15,7 @@ export class AddTaskComponent {
   mainFrom: FormGroup
 
   constructor(private tasksService: TasksService){
-    this.mainFrom = new FormGroup<FormTypes>({
+    this.mainFrom = new FormGroup({
       firstName: new FormControl('', Validators.required),
       secondName: new FormControl('', Validators.required),
       content: new FormControl('', Validators.required),
@@ -24,12 +24,7 @@ export class AddTaskComponent {
   }
 
   submit(){
-    this.tasksService.addTask({
-      content: this.mainFrom.value.content || '',
-        firstName: this.mainFrom.value.firstName || '',
-        secondName: this.mainFrom.value.secondName || '',
-        date: this.mainFrom.value.date || new Date()
-    })
+    this.tasksService.addTask(this.mainFrom.value)
   }
 
 
