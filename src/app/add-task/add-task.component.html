@@ -1,1 +1,6 @@
-<p>add-task works!</p>
+<form [formGroup]="mainFrom" (ngSubmit)="submit()">
+    <input formControlName="firstName">
+    <input formControlName="secondName">
+    <input formControlName="content">
+    <button [disabled]="mainFrom.invalid" type="submit">Add Something</button>
+</form>
