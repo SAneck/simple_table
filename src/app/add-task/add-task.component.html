@@ -1,6 +1,26 @@
-<form [formGroup]="mainFrom" (ngSubmit)="submit()">
-    <input formControlName="firstName">
-    <input formControlName="secondName">
-    <input formControlName="content">
-    <button [disabled]="mainFrom.invalid" type="submit">Add Something</button>
+<form [formGroup]="mainFrom" (ngSubmit)="submit()" class="form__container">
+	<div class="input__row">
+		<input
+			formControlName="firstName"
+			placeholder="First Name"
+			class="form__input"
+		/>
+	</div>
+	<div class="input__row">
+		<input
+			formControlName="secondName"
+			placeholder="Second Name"
+			class="form__input"
+		/>
+	</div>
+	<div class="input__row">
+		<input
+			formControlName="content"
+			placeholder="Content"
+			class="form__input"
+		/>
+	</div>
+	<button type="submit" [disabled]="mainFrom.invalid" class="submit__btn">
+		Add Something
+	</button>
 </form>

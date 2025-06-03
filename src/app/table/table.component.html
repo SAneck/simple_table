@@ -1,26 +1,25 @@
 <table>
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">SecondName</th>
-            <th scope="col">Firstname</th>
-            <th scope="col">Content</th>
-            <th scope="col">Data</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let task of tasks$ | async; let index = index">  
-            <th scope="row" data-label="ID">{{index}}</th>
-            <td data-label="Firstname">{{task.firstName}}</td>
-            <td data-label="SecondName">{{task.secondName}}</td>
-            <td data-label="Content">{{task.content}}</td>
-            <td data-label="Date">{{task.date | date: 'dd/MM/yyyy' }}</td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <th scope="row" colspan="2">All tasks</th>
-            <td>{{numbersOfTasks$ | async }}</td>
-        </tr>
-    </tfoot>
+	<thead>
+		<tr>
+			<th scope="col">ID</th>
+			<th scope="col">SecondName</th>
+			<th scope="col">Firstname</th>
+			<th scope="col">Content</th>
+			<th scope="col">Data</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let task of tasks$ | async; let index = index">
+			<th scope="row" data-label="ID">{{ index }}</th>
+			<td data-label="Firstname">{{ task.firstName }}</td>
+			<td data-label="SecondName">{{ task.secondName }}</td>
+			<td data-label="Content">{{ task.content }}</td>
+			<td data-label="Date">{{ task.date | date : 'dd/MM/yyyy' }}</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<th scope="row" colspan="2">All tasks {{ numbersOfTasks$ | async }}</th>
+		</tr>
+	</tfoot>
 </table>
