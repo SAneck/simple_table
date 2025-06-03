@@ -5,6 +5,8 @@ $white: white;
 	align-items: center;
 	justify-content: center;
 
+
+
 	td,
 	th {
 		text-align: center;
@@ -25,13 +27,37 @@ $white: white;
 			background-color: #333333;
 			padding: 40px;
 
+			button {
+
+				all: unset;
+
+				cursor: pointer;
+				.img__sort__down {
+					width: 20px;
+					height: 20px;
+					background-color: $white;
+					background-image: url(../../../img/sort__down.svg);
+				}
+				.img__sort__up {
+					width: 20px;
+					height: 20px;
+					background-color: $white;
+					background-image: url(../../../img/sort__up.svg);
+				}
+
+			}
+
+
+
 			thead th {
 				text-align: left;
 				font-weight: 500;
 				text-transform: uppercase;
 				letter-spacing: 0.5px;
+
 			}
 		}
+
 		tbody tr {
 			position: relative;
 
@@ -52,6 +78,7 @@ $white: white;
 		}
 
 		tfoot {
+
 			th,
 			td {
 				margin-left: 0;

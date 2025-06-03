@@ -4,3 +4,8 @@ export interface FormTypes{
     content: string | null
     date: Date | null
 }
+export enum TaskField {
+    Content = 'content',
+    FirstName = 'firstName',
+    SecondName = 'secondName'
+}

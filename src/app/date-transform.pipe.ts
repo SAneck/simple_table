@@ -7,8 +7,8 @@ import { FormControl } from '@angular/forms';
 })
 export class DateTransformPipe implements PipeTransform {
 
-  transform(value: FormControl<Date | null >) {
-    return value.value
+  transform(value: number) {
+    return value
   }
 
 }
