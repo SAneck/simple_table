@@ -7,5 +7,6 @@ export interface FormTypes{
 export enum TaskField {
     Content = 'content',
     FirstName = 'firstName',
-    SecondName = 'secondName'
+    SecondName = 'secondName',
+    Date = 'date'
 }

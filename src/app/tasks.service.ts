@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, switchMap } from 'rxjs';
 import { FormTypes, TaskField } from './form-types';
 @Injectable({
   providedIn: 'root'
@@ -8,9 +8,9 @@ export class TasksService {
 
   tasks$ = new BehaviorSubject<FormTypes[]>([])
 
-  pagination$ = new BehaviorSubject<any>([])
+  pagination$ = new BehaviorSubject(0)
 
-  constructor() { }
+  constructor() {}
 
   addTasksToStorage() {
     localStorage.setItem('tasks', JSON.stringify(this.tasks$.value))
@@ -27,9 +27,6 @@ export class TasksService {
     this.addTasksToStorage()
   }
 
-  paginate(){
-    this.pagination$.next([...this.tasks$.value])
-  }
 
   sortContent(sortState: boolean, field: TaskField){
     if(sortState){
