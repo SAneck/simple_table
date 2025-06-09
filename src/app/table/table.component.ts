@@ -1,45 +1,51 @@
-import { PaginationComponent } from './../pagination/pagination.component';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { FormTypes, TaskField } from '../form-types';
-import { TasksService } from '../tasks.service';
-import { CommonModule, NgFor } from '@angular/common';
+import { Component } from '@angular/core'
+import { Observable } from 'rxjs'
+import { FormTypes, TaskField } from '../form-types'
+import { TasksService } from '../tasks.service'
+import { CommonModule } from '@angular/common'
+
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [NgFor, CommonModule, PaginationComponent],
+  imports: [CommonModule],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
   tasks$: Observable<FormTypes[]>
-  numbersOfTasks$: Observable<number>
+  totalItems$: Observable<number[]>
 
-  currentPage: number = 1;
-  itemsPerPage: number = 10;
-
-  pagination$: Observable<any>
-
-  TaskField = TaskField
+  startValue: number = 0
+  endValue: number = 5
 
   sortPosition: boolean = false
+  TaskField = TaskField
 
   columns = [
     { title: 'SecondName', field: TaskField.SecondName, scope: 'col' },
     { title: 'Firstname', field: TaskField.FirstName, scope: 'col' },
     { title: 'Content', field: TaskField.Content, scope: 'col' },
     { title: 'Data', field: TaskField.Date, scope: 'col' }
-  ];
+  ]
 
   constructor(private taskService: TasksService) {
     this.tasks$ = this.taskService.tasks$
+    this.totalItems$ = this.taskService.totalItems$
 
-    this.pagination$ = this.taskService.tasks$
+    this.taskService.start$.subscribe(val => this.startValue = val)
+    this.taskService.end$.subscribe(val => this.endValue = val)
+  }
 
-    this.numbersOfTasks$ = this.taskService.tasks$.pipe(
-      map((tasks) => tasks.length)
-    )
+  goToPage(page: number) {
+    this.taskService.goToPage(page)
+  }
+
+  nextPage() {
+    this.taskService.paginateNext()
+  }
+
+  prevPage() {
+    this.taskService.paginateBack()
   }
 
   changeSortIcon() {
@@ -51,4 +57,7 @@ export class TableComponent {
     this.taskService.sortContent(this.sortPosition, field)
   }
 
+  isActivePage(page: number): boolean {
+    return this.startValue === (page - 1) * 5;
+  }
 }
