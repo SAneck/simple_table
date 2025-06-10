@@ -1,8 +1,8 @@
-export interface FormTypes{
-    firstName: string | null
-    secondName: string | null
-    content: string | null
-    date: Date | null
+export interface FormTypes {
+    firstName?: string
+    secondName?: string
+    content?: string
+    date?: Date
 }
 export enum TaskField {
     Content = 'content',

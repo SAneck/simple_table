@@ -1,35 +1,28 @@
 .form__container {
 	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	padding: 20px;
+	flex-direction: column;
 	max-width: 1520px;
-	min-width: 300px;
-	margin: 20px auto;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	box-sizing: border-box;
+	gap: 20px;
 }
 
 .input__row {
-	margin-bottom: 24px;
+	gap: 20px;
 	position: relative;
 	padding-bottom: 8px;
-
-	&::after {
-		content: '';
-		position: absolute;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		height: 1px;
-		background-color: #e0e0e0;
-	}
+	border-bottom: 2px solid #e0e0e0;
 }
 
 .form__input {
 	width: 100%;
 	padding: 12px 16px;
 	border: none;
-	background: transparent;
 	font-size: 16px;
-	box-sizing: border-box;
 
 	&:focus {
 		outline: none;
@@ -50,10 +43,8 @@
 	border-radius: 4px;
 	font-size: 14px;
 	text-transform: uppercase;
-	letter-spacing: 0.5px;
 	cursor: pointer;
 	transition: background-color 0.3s;
-	margin-top: 8px;
 	box-sizing: border-box;
 
 	&:hover {

@@ -1,62 +1,54 @@
-$white: white;
-
 :host {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
-
+	max-width: 1520px;
+	margin: 0 auto;
+	padding: 20px;
 
 	td,
 	th {
 		text-align: center;
 		padding: 12px 16px;
 		border: none;
+		width: 100%;
+
 	}
 
 	table {
-		width: 80%;
+		table-layout: fixed;
+		width: 100%;
 		border-collapse: collapse;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 		overflow: hidden;
 		border-radius: 8px;
-
 		thead {
-			color: $white;
+			color: var(--global--white);
 			background-color: #333333;
 			padding: 40px;
 
-			button {
-
-				all: unset;
-
-				cursor: pointer;
-
-				.img__sort__down {
-					width: 20px;
-					height: 20px;
-					background-color: $white;
-					background-image: url(../../../img/sort__down.svg);
-				}
-
-				.img__sort__up {
-					width: 20px;
-					height: 20px;
-					background-color: $white;
-					background-image: url(../../../img/sort__up.svg);
-				}
-
-			}
-
-
-
-			thead th {
-				text-align: left;
+			th {
 				font-weight: 500;
-				text-transform: uppercase;
 				letter-spacing: 0.5px;
+				text-align: center;
+				vertical-align: middle;
 
+				button {
+					all: unset;
+					cursor: pointer;
+					display: inline-flex;
+					vertical-align: middle;
+
+					img {
+						border: 0;
+						width: 20px;
+						height: 20px;
+						background-size: contain;
+						vertical-align: middle;
+
+					}
+				}
 			}
 		}
 
@@ -80,14 +72,12 @@ $white: white;
 		}
 
 		tfoot {
-
 			width: 100%;
 
 			tr {
 				th {
 					text-align: center;
 				}
-
 			}
 
 			.pagination-container {
@@ -100,7 +90,7 @@ $white: white;
 			.pagination-button {
 				padding: 6px 12px;
 				background-color: #333333;
-				color: white;
+				color: var(--global--white);
 				border: none;
 				border-radius: 4px;
 				cursor: pointer;
@@ -132,12 +122,12 @@ $white: white;
 
 				&:hover {
 					background-color: #333333;
-					color: white;
+					color: var(--global--white);
 				}
 
 				&.active {
 					background-color: #333333;
-					color: white;
+					color: var(--global--white);
 					font-weight: bold;
 				}
 			}
