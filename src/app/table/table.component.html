@@ -1,0 +1,45 @@
+<table>
+	<thead>
+		<tr>
+			<ng-container *ngFor="let column of columns">
+				<ng-container *ngTemplateOutlet="columnHeader; context: { $implicit: column }"></ng-container>
+			</ng-container>
+		</tr>
+	</thead>
+
+	<ng-template #columnHeader let-column>
+		<th [scope]="column.scope">
+			{{column.title}}
+			<button (click)="sortContent(column.field)">
+				<img class="img__sort" src="../../assets/img/sort.svg">
+			</button>
+		</th>
+	</ng-template>
+	<tbody>
+		<tr *ngFor="let task of tasks$ | async | slice:  startValue: endValue; let index = index">
+			<td data-label="FirstName">{{ task.firstName }}</td>
+			<td data-label="SecondName">{{ task.secondName }}</td>
+			<td data-label="Content">{{ task.content }}</td>
+			<td data-label="Date">{{ task.date | date : 'dd/MM/yyyy' }}</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<th [attr.colspan]="columns.length" scope="row">
+				<div class="pagination-container">
+					<button class="pagination-button" (click)="prevPage()">Back</button>
+
+					<div class="page-numbers">
+						<span *ngFor="let page of totalItems$ | async">
+							<button class="page-button" [class.active]="isActivePage(page)" (click)="goToPage(page)">
+								{{ page }}
+							</button>
+						</span>
+					</div>
+
+					<button class="pagination-button" (click)="nextPage()">Next</button>
+				</div>
+			</th>
+		</tr>
+	</tfoot>
+</table>
